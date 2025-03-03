@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fi" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi">
+<head>
+<meta charset="utf-8"/>
+<link rel="StyleSheet" href="static/tyylit.css" type="text/css" />
+<title>Image classification service</title>
+</head>
+
+<body>
+    <p>{{error}}</p>
+    <form action = "./" , method = "POST" enctype="multipart/form-data">
+    
+    <label for="precdiction_num">how many predictions?</label> 
+    <input type="number" id="precdiction_num" name="precdiction_num" min="1" max="5"><br><br>
+    <input type="file" id="Image" name="Image" accept="image/*" />
+
+    
+    <input type="submit" value="upload image">  
+    </form>
+    {%if show%}
+    <h2>Predictions</h2>
+    {%endif%}
+    <ul>
+        {%for prediction in predictions %}
+        <li>Prediction: {{ prediction[1] }} (Probability: {{ prediction[2]|round(4) }})</li>
+        {%endfor%}
+    </ul>
+
+
+
+</body>
